@@ -10,4 +10,5 @@ try {
 $query = $handler->query('SELECT * FROM guestbook');
 
 $r = $query->fetch();
-print_r($r);
+
+echo '<pre>',print_r($r),'</pre>';
