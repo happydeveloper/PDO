@@ -9,6 +9,5 @@ try {
 
 $query = $handler->query('SELECT * FROM guestbook');
 
-while($r = $query->fetch()) {
-	echo $r["message"], '<br>';
-}	
+$r = $query->fetch();
+print_r($r);
