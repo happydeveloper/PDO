@@ -7,5 +7,8 @@ try {
 	die();
 }
 
-echo 'The rest of our page.';
-	
+$query = $handler->query('SELECT * FROM guestbook');
+
+while($r = $query->fetch()) {
+	echo $r["message"], '<br>';
+}	
