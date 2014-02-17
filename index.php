@@ -9,7 +9,13 @@ try {
 
 $qry = $db->query('SELECT * FROM guestbook');
 
-$r = $qry->fetch();
+//$r = $qry->fetch(PDO::FETCH_BOTH);
+//$r = $qry->fetch(PDO::FETCH_NUM);
+//$r = $qry->fetch(PDO::FETCH_ASSOC);
+//$r = $qry->fetch(PDO::FETCH_OBJ);
+//echo '<pre>', print_r($r), '</pre>';
 
-echo '<pre>', print_r($r), '</pre>';
+while($r = $qry->fetch(PDO::FETCH_OBJ)) {
+	echo $r->message, '<br>';
+}
 
