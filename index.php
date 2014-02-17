@@ -9,7 +9,7 @@ try {
 
 $qry = $db->query('SELECT * FROM guestbook');
 
-while($r = $qry->fetch()) {
-	echo $r['message'], '<br>';
-}
+$r = $qry->fetch();
+
+echo '', print_r($r);
 
