@@ -11,5 +11,5 @@ $qry = $db->query('SELECT * FROM guestbook');
 
 $r = $qry->fetch();
 
-echo '', print_r($r);
+echo '<pre>', print_r($r), '</pre>';
 
