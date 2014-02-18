@@ -7,14 +7,20 @@ try {
 	die('sorry, database problem');
 }
 
+
+class GuestbookEntry {
+    public $id, $name, $message, $posted, $entry;
+    
+    public function __construct() {
+        $this->entry = "{$this->name} posted : {$this->message}";
+    }
+}
+
 $qry = $db->query('SELECT * FROM guestbook');
 
-//$r = $qry->fetch(PDO::FETCH_BOTH);
-//$r = $qry->fetch(PDO::FETCH_NUM);
-//$r = $qry->fetch(PDO::FETCH_ASSOC);
-//$r = $qry->fetch(PDO::FETCH_OBJ);
-//echo '<pre>', print_r($r), '</pre>';
+$qry->setFetchMode(PDO::FETCH_CLASS,'GuestbookEntry');
 
-while($r = $qry->fetch(PDO::FETCH_OBJ)) {
-	echo $r->message, '<br>';
+while($r = $qry->fetch()) {
+	//echo '<pre>', print_r($r) , '</pre>';
+	echo $r->entry, '<br>';
 }
