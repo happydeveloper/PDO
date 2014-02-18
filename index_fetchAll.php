@@ -8,7 +8,7 @@ try {
 }
 
 
-$query = $handler->query('SELECT * FROM guestbook');
+$query = $handler->query('SELECT * FROM guestbook LIMIT 0');
 
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
