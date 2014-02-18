@@ -1,14 +1,20 @@
 <?php
 try {
-	$handler = new PDO('mysql:host=127.0.0.1;dbname=app','root','111111');
-	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
+	$db = new PDO('mysql:host=127.0.0.1;dbname=app','root','111111');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}catch(PDOException $e) {
 	echo $e->getMessage();
-	die();
+	die('sorry, database problem');
 }
 
-$query = $handler->query('SELECT * FROM guestbook');
+$qry = $db->query('SELECT * FROM guestbook');
 
-$r = $query->fetch();
+//$r = $qry->fetch(PDO::FETCH_BOTH);
+//$r = $qry->fetch(PDO::FETCH_NUM);
+//$r = $qry->fetch(PDO::FETCH_ASSOC);
+//$r = $qry->fetch(PDO::FETCH_OBJ);
+//echo '<pre>', print_r($r), '</pre>';
 
-echo '<pre>',print_r($r),'</pre>';
+while($r = $qry->fetch(PDO::FETCH_OBJ)) {
+	echo $r->message, '<br>';
+}
