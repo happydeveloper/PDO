@@ -9,4 +9,12 @@ try {
 
 
 $query = $handler->query('SELECT * FROM guestbook');
-echo '<pre>' , print_r($query->fetchAll(PDO::FETCH_ASSOC)) , '</pre>';
+
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+if(count($result)) {
+    echo 'There are result 결과가 있습니다.';
+} else {
+    echo 'There are no result 결과가 없습니다.';
+}
