@@ -7,12 +7,16 @@ try {
     die();
 }
 
-$name = 'Joshua1';
-$message = 'Test1';
+$name = 'Joshua2';
+$message = 'Test3';
 
-$sql = "INSERT INTO guestbook (name, message, posted) VALUES (:name, :message, NOW())";
+$sql = "INSERT INTO guestbook (name, message, posted) VALUES (?, ?, NOW())";
 $query = $hdlr->prepare($sql);
-$query->execute(array(
-    ':name' => $name,
-    ':message' => $message
-));
+$query->execute(array($name,$message));
+
+
+$name = 'Joshua4';
+$message = 'Test4';
+
+
+$query->execute(array($name,$message));
